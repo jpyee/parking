@@ -1,0 +1,17 @@
+!!!5
+html
+  body
+    h1 jade
+    - if (typeof(usr) != 'undefined')
+      span= "Hi, " + usr
+      a(href='/logout')= "logout"
+    - else
+      a(href='/auth/github')= "github login"
+
+    a(href='/auth/facebook')= "facebook login"
+
+      
+  a(href='/auth/twitter')= "twitter login"
+
+      
+    

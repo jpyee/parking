@@ -1,0 +1,145 @@
+<div class="spinner-wrapper">
+	<div class="spinner">
+    	<ul>
+    		<li></li>
+      		<li></li>
+      		<li></li>
+    	</ul>
+    	<ul>
+    		<li></li>
+      		<li></li>
+      		<li></li>
+    	</ul>
+    </div>
+	<div class="gradient"></div>
+</div>
+
+<style>
+* {
+    margin: 0; padding: 0;
+}
+
+/**
+ * CSS Loading animation
+ */
+ 
+@-webkit-keyframes loading-spinner {
+0%   { -webkit-transform:rotate(0deg); }
+100% { -webkit-transform:rotate(360deg); }
+}
+
+@-moz-keyframes loading-spinner {
+0%   { -moz-transform:rotate(0deg); }
+100% { -moz-transform:rotate(360deg); }
+}
+
+
+@keyframes loading-spinner {
+0%   { transform:rotate(0deg); }
+100% { transform:rotate(360deg); }
+}
+
+.spinner-wrapper, .spinner, .spinner ul li, .spinner ul:nth-child(2), .gradient{
+	width: 50px;
+	height: 50px;
+	border-radius:50px;
+}
+
+
+.spinner-wrapper{
+	position:relative;
+	margin: 100px auto;
+	
+	-webkit-box-shadow: 0px 3px 6px 0px rgba(0,0,0,.4);
+	box-shadow: 0px 3px 6px 0px rgba(0,0,0,.4);
+}
+
+.spinner{
+	-webkit-animation: loading-spinner 1s infinite linear;
+	-moz-animation: loading-spinner 1s infinite linear;
+	animation: loading-spinner 1s infinite linear;
+}
+
+.spinner ul{
+    margin: 0 0 0px 0px;
+}
+
+.spinner ul li{
+	position:absolute;
+	clip:rect(0, 25px, 25px, 0);	
+}
+
+.spinner ul:nth-child(2){
+	height:50%;
+	overflow:hidden;
+	position:absolute;
+}
+
+.gradient{
+	position:absolute;
+	left:0;
+	top:0;
+
+	background: -moz-radial-gradient(center, ellipse cover,  rgba(0,0,0,0) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.3) 100%); /* FF3.6+ */
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(0,0,0,0)), color-stop(50%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.3))); /* Chrome,Safari4+ */
+	background: -webkit-radial-gradient(center, ellipse cover,  rgba(0,0,0,0) 0%,rgba(0,0,0,0) 50%,rgba(0,0,0,0.3) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-radial-gradient(center, ellipse cover,  rgba(0,0,0,0) 0%,rgba(0,0,0,0) 50%,rgba(0,0,0,0.3) 100%); /* Opera 12+ */
+	background: radial-gradient(center, ellipse cover,  rgba(0,0,0,0) 0%,rgba(0,0,0,0) 50%,rgba(0,0,0,0.3) 100%); /* W3C */
+
+}
+
+.spinner ul:first-child li:first-child{
+	background-color:#82cf4c;
+	
+	-webkit-transform:rotate(180deg);
+	-moz-transform:rotate(180deg);
+	-o-transform:rotate(180deg);
+	transform:rotate(180deg);
+}
+
+.spinner ul:first-child li:nth-child(2){
+	background-color:#00aef0;
+	
+	-webkit-transform:rotate(240deg);
+	-moz-transform:rotate(240deg);
+	-o-transform:rotate(240deg);
+	transform:rotate(240deg);
+}
+
+.spinner ul:first-child li:nth-child(3){
+	background-color:#99008c;
+	
+	-webkit-transform:rotate(300deg);
+	-moz-transform:rotate(300deg);
+	-o-transform:rotate(300deg);
+	transform:rotate(300deg);
+}
+
+.spinner ul:nth-child(2) li:first-child{
+	background-color:#f7004f;
+	
+	-webkit-transform:rotate(0deg);
+	-moz-transform:rotate(0deg);
+	-o-transform:rotate(0deg);
+	transform:rotate(0deg);
+}
+
+.spinner ul:nth-child(2) li:nth-child(2){
+	background-color:#fd910a;
+	
+	-webkit-transform:rotate(60deg);
+	-moz-transform:rotate(60deg);
+	-o-transform:rotate(60deg);
+	transform:rotate(60deg);
+}
+
+.spinner ul:nth-child(2) li:nth-child(3){
+	background-color:#fff910;
+	
+	-webkit-transform:rotate(120deg);
+	-moz-transform:rotate(120deg);
+	-o-transform:rotate(120deg);
+	transform:rotate(120deg);
+}
+
+</style>

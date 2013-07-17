@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= locals.title %></title>
+	
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/bootstrap-responsive.css" rel="stylesheet">  
+	
+   <script src="/assets/js/jquery-1.9.1.min.js"></script>    
+   <script src="/assets/js/underscore.js"></script> 
+   <script src="/assets/js/backbone/backbone-min.js"></script> 
+   <script src="/assets/js/socket.io.js"></script> 
+ 
+<script src="/assets/js/bootstrap/js/bootstrap-tooltip.js"></script>  
+<script src="/assets/js/bootstrap/js/bootstrap-popover.js"></script>   
+<script src="/assets/js/bootstrap/js/bootstrap-alert.js"></script>  
+<script src="/assets/js/bootstrap/js/bootstrap-modal.js"></script>  
+<script src="/assets/js/bootstrap/js/bootstrap-dropdown.js"></script> 
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+
+  </head>
+<style>
+body {
+  text-align: center;
+  background-image: -webkit-radial-gradient(center top, circle farthest-corner, #FFFFFF 0%, #D8DFE9 100%);
+  background-image: radial-gradient(circle farthest-corner at center top, #FFFFFF 0%, #D8DFE9 100%);
+}
+.container{
+position: relative;
+display: block;
+   padding-top: 92px;
+   
+margin: 0 auto !important;
+ float: none !important;
+ text-align: center;
+ width: 960px;
+}
+
+#sidebar{
+margin-bottom: 20px;
+padding: 20px;
+background: #fff;
+border: 1px solid #DEDEDE;
+border-radius: 4px;
+box-shadow: 0 2px 2px -1px rgba(0,0,0,.055);
+text-align: left;
+}
+
+#sidebar ul li {
+border-bottom: 1px solid #eee;
+line-height: 28px;
+width: 160px;
+}
+
+.portlet-decoration {
+border-bottom: 1px solid #CCC;
+margin-bottom: 15px;
+padding-bottom: 5px;
+}
+
+.content{
+padding: 20px;
+background: #fff;
+border: 1px solid #ccc;
+border-radius: 5px;
+box-shadow: 0 0 10px #ccc;
+overflow: hidden;
+}
+
+.content label{
+font-size: 18px;
+}
+
+.content input[type="text"],input[type="password"] {
+border: 1px solid #e5e5e5;
+font-size: 18px;
+width: 400px;
+display: block;
+padding: 10px 5px;
+font-family: 'Open Sans Light', sans;
+color: #333;
+outline: 0;
+box-shadow: 0px 1px 0px #fff;
+}
+
+.content input[type="text"]:focus{ 
+  border:1px solid #539fb5; 
+}
+
+.content input[type="submit"]:not(.del_btn) {
+display: block;
+height: 33px;
+line-height: 34px;
+padding: 0 15px;
+background-color: #55bc75;
+color: #fff;
+cursor: pointer;
+border: none;
+-webkit-border-radius: 2px;
+-moz-border-radius: 2px;
+border-radius: 2px;
+-webkit-transition: opacity 0.8s linear;
+-moz-transition: opacity 0.8s linear;
+transition: opacity 0.8s linear;
+-webkit-border-radius: 40px;
+border-radius: 40px;
+margin: 0 auto;
+} 
+
+.content input[type="submit"]:hover:not(.del_btn){ 
+background-color: #409f89; 
+} 
+
+.content .del_btn{
+display: block;
+height: 33px;
+line-height: 34px;
+padding: 0 15px;
+color: #fff;
+cursor: pointer;
+border: none;
+-webkit-border-radius: 2px;
+-moz-border-radius: 2px;
+border-radius: 2px;
+-webkit-transition: opacity 0.8s linear;
+-moz-transition: opacity 0.8s linear;
+transition: opacity 0.8 linear;
+-webkit-border-radius: 40px;
+border-radius: 40px;
+margin: 0 auto;
+background:rgb(188, 106, 85);
+}
+
+.content .del_btn:hover{
+background:rgb(204, 110, 87);
+}
+
+</style>
+  <body>
+    <div class="wrapper">
+	    <div class="inner-wrapper">  
+  
+            <% include header %>
+	
+	
+	 
+	<div class="row-fluid container">
+	
+	    <div id="sidebar" class="span3">
+			<div class="portlet-decoration">
+                 <h4>Settings</h4>
+            </div>
+		
+	        <ul class="nav">
+                <li><a href="/settings/account" class="active">Account</a></li>
+                <li><a href="/settings/profile" >Profile</a></li>
+                <li><a href="/settings/social" >Social</a></li>				
+                <li><a href="/settings/notification" >Notifications</a></li>
+            </ul>
+	    </div>	
+	
+      <div class="span9  content">
+        <form method="post" action="/settings/account" id="account-form" class="form-horizontal" >
+            <input type="hidden" name="_csrf" value="<%= token %>"/>
+	        <input type="hidden" name="_method" value="put" />
+            <h3>Account</h3>
+			<h4 >Update your Email or Password</h4>
+            <hr>
+            <fieldset>
+                <div id="email-cg" class="control-group">
+                    <label for="email-tf" class="control-label">Email</label>
+                    <div class="controls email">
+                        <input id="email-tf" type="text" name="email" value="<%= user.email %>" class="input-xlarge">
+                    </div>
+                </div>
+                <hr>
+                <p id="sub2" class="subheading"></p>
+                <div id="old_password-cg" class="control-group">
+                    <label for="old_password-tf" class="control-label">old password</label>
+                    <div class="controls pass">
+                        <input id="old_password-tf" type="password" name="old_password" value="" class="input-xlarge">
+                    </div>
+                </div>
+                <div id="password-cg" class="control-group">
+                    <label for="password-tf" class="control-label">new password</label>
+                    <div class="controls  pass">
+                        <input id="password-tf" type="password" name="password" value="" class="input-xlarge">
+                    </div>
+                </div>
+                <div id="new_password-cg" class="control-group">
+                    <label for="new_password-tf" class="control-label">repeate password</label>
+                    <div class="controls pass">
+                        <input id="new_password-tf" type="password" name="new_password" value="" class="input-xlarge">
+                    </div>
+                </div>	  
+                 <div >
+                      <input type="submit" id="account-form-btn2"  value="Update Setting"></input>
+                </div>
+             </fieldset>
+        </form>
+        <hr>
+        <form method="post" action="/settings/account" id="account-form" class="form-horizontalspan6" >
+            <input type="hidden" name="_csrf" value="<%= token %>"/>
+	        <input type="hidden" name="_method" value="delete" />  
+			
+            <h3>Delete Account</p>
+	        <input type="submit"  value="Delete Account" class="del_btn"></input>	
+        </form>	
+      </div>
+    </div>	  
+<!-- display form errors in a custom modal window //-->
+
+
+    <% include footer %>
+ </body>
+ 
+ <style>
+form .controls.error:after,
+form .controls.success:after{
+	content:'';	
+	position:absolute;
+	right: 60px;
+	width:32px;
+	height:32px;
+	background:url('/assets/img/indicator.png') no-repeat;
+}
+    
+ form .controls.error:after{
+	background-position: 0 -79px;
+} 
+ </style>
+ 
+ <script src="/assets/js/jquery.complexify.js"></script>
+ <script>
+ var pass1 = $('#password-tf'),
+		pass2 = $('#new_password-tf'),
+		email = $('#email-tf'),
+		form = $('#main account-form'),
+		old_pass = $('#old_password-tf');
+ pass2.attr('disabled','true');
+
+// Validate the email field
+email.on('blur',function(){		
+		// Very simple validation
+	if (!/^\S+@\S+\.\S+$/.test(email.val())){
+		email.parent().addClass('error').removeClass('success');
+	}
+	else{
+		email.parent().removeClass('error').addClass('success');
+	}		
+});
+
+// Use the complexify plugin on the first password field
+pass1.complexify({minimumChars:6, strengthScaleFactor:0.7}, function(valid, complexity){
+		if(valid){
+			pass2.removeAttr('disabled');			
+			pass1.parent()
+					.removeClass('error')
+					.addClass('success');
+			
+		}
+		else{
+			pass2.attr('disabled','true');			
+			pass1.parent()
+					.removeClass('success')
+					.addClass('error');
+		}		
+		var calculated = (complexity/100)*268 - 134;
+		var prop = 'rotate('+(calculated)+'deg)';
+	});
+
+	// Validate the second password field
+pass2.on('keydown input',function(){	
+		// Make sure its value equals the first's
+	if(pass2.val() == pass1.val()){
+		pass2.parent()
+					.removeClass('error')
+					.addClass('success');
+	}
+	else{
+		pass2.parent()
+					.removeClass('success')
+					.addClass('error');
+	} 
+});	
+
+
+
+ // Handle form submissions
+form.on('submit',function(e){		
+		// Is everything entered correctly?
+	if($('#main .row.success').length == $('#main .row').length){
+			// Yes!
+		alert("Thank you for trying out this demo!");
+		e.preventDefault(); // Remove this to allow actual submission
+	}
+	else{
+			// No. Prevent form submission
+		e.preventDefault();
+	}
+});
+	
+ </script>
+
+</html>

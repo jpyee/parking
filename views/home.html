@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SensorAid</title>
+
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/bootstrap-responsive.css" rel="stylesheet">  
+	
+   <script src="/assets/js/jquery-1.9.1.min.js"></script>   
+   <script src="/assets/js/underscore.js"></script>
+   <script src="/assets/js/backbone/backbone-min.js"></script>
+   <script src="/assets/js/socket.io.js"></script>
+
+<script src="/assets/js/bootstrap/js/bootstrap-tooltip.js"></script> 
+<script src="/assets/js/bootstrap/js/bootstrap-popover.js"></script>  
+<script src="/assets/js/bootstrap/js/bootstrap-alert.js"></script> 
+<script src="/assets/js/bootstrap/js/bootstrap-modal.js"></script> 
+<script src="/assets/js/bootstrap/js/bootstrap-dropdown.js"></script>
+   
+<script src="/assets/js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+   
+    <!-- Fav and touch icons
+http://www.kickstarter.com/projects/mattiaslepp/smart-herb-garden-by-click-and-grow?ref=category
+http://www.kickstarter.com/projects/peterseid/romo-the-smartphone-robot-for-everyone?ref=category
+http://www.patentlyapple.com/patently-apple/2013/04/apple-reveals-an-advanced-indoor-mobile-location-application-for-finding-a-vehicle-in-a-parking-structure.html
+	-->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="../assets/ico/favicon.png">		
+
+
+
+
+
+	
+  
+  </head>
+<style>
+body {
+  text-align: center;
+  background-image: -webkit-radial-gradient(center top, circle farthest-corner, #FFFFFF 0%, #D8DFE9 100%);
+  background-image: radial-gradient(circle farthest-corner at center top, #FFFFFF 0%, #D8DFE9 100%);
+}
+
+ <style>
+ .content{
+     position: relative;
+	margin-top:140px;	 
+ }
+
+#editor { 
+height: 351px;
+margin-top: 20px;	
+}
+ </style>
+  <body>
+    <div class="wrapper">
+	    <div class="inner-wrapper">
+			
+            <% include header %>	
+			
+	        <div class="content">  </div>	
+            			
+			<% include device/device_modal %>
+
+            <div class="row-fluid" style="margin-top:80px;">     
+                <% include device/device_code_editor %>
+                <% include device/device_status %>  
+                <% include device/device_list %>
+            </div>
+         </div>	
+
+            <% include footer %>
+			
+		</div>
+	</div>				
+  </body>
+
+  
+<script>
+
+initWebsocket();
+function initWebsocket(){
+            console.log('init train socket');
+            var socket =  io.connect(':8082/');
+						
+            socket.on('connect', function(message) {
+                console.log('on connect',message);
+            });
+            socket.on('news', function(message){
+			   console.log(message);			   
+            });
+}
+
+</script>  
+
+
+ <script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/monokai");
+    editor.getSession().setMode("ace/mode/javascript");
+	
+    editor.getSession().on('change', function(e) {
+	    console.log(e.type);
+    });
+	
+	editor.getSession().selection.on('changeSelection', function(e) {
+	
+	    console.log(e);
+    });
+	
+	editor.setReadOnly(false); 
+	editor.getSession().setUseWrapMode(true);
+	editor.session.getLength();
+	editor.insert("Something cool");
+	
+	//editor.setValue("the new text here"); // or session.setValue
+    console.log( editor.getValue() ); // or session.getValue
+
+</script> 
+  
+</html>

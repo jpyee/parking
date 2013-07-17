@@ -1,0 +1,172 @@
+	<div id="mailbox">
+
+		<header>
+			
+			<h3>Mailbox</h3>
+
+		</header>
+
+		<ul>
+
+			<li class="clearfix">
+				<span class="entypo-inbox"></span>
+				<a href="#">Inbox</a>
+				<span class="count">1337</span>
+			</li>
+
+			<li class="clearfix">
+				<span class="entypo-star"></span>
+				<a href="#">Favorites</a>
+				<span class="count">4</span>
+			</li>
+
+			<li class="clearfix">
+				<span class="entypo-paper-plane"></span>
+				<a href="#">Sent</a>
+				<span class="count">132</span>
+			</li>
+
+			<li class="clearfix">
+				<span class="entypo-flag"></span>
+				<a href="#">Flagged</a>
+				<span class="count">3</span>
+			</li>
+
+			<li class="clearfix">
+				<span class="entypo-trash"></span>
+				<a href="#">Deleted</a>
+				<span class="count">42</span>
+			</li>
+
+		</ul>
+
+
+		<footer>
+			
+			<p><a href="#">More</a><span class="entypo-down-open"></span></p>
+
+		</footer>
+
+	</div> <!-- end mailbox -->
+	
+<style>
+
+/* ---------- ENTYPO ---------- */
+/* ---------- http://www.entypo.com/ ---------- */
+/* ---------- http://weloveiconfonts.com/ ---------- */
+
+@import url(http://weloveiconfonts.com/api/?family=entypo);
+
+/* ---------- ERIC MEYER'S RESET CSS ---------- */
+/* ---------- http://meyerweb.com/eric/tools/css/reset/ ---------- */
+
+@import url(http://meyerweb.com/eric/tools/css/reset/reset.css);
+
+/* ---------- FONTAWESOME ---------- */
+
+[class*="entypo-"]:before {
+  font-family: 'entypo', sans-serif;
+}
+
+.clearfix:before, .clearfix:after {
+	display: table;
+	content: "";
+}
+.clearfix:after { clear: both; }
+
+a { text-decoration: none; }
+
+/* ---------- Mailbox ---------- */
+
+.count {
+	background-color: #3090bd;
+	border-radius: 15px;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	color: #ecf0f1;
+	display: inline-block;
+	font-size: 12px;
+	line-height: 24px;
+	height: 24px;
+	min-width: 12px;
+	margin-top: 8px;
+	padding: 0 6px;
+	text-align: center;
+}
+
+#mailbox {
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	margin: 50px auto;
+	width: 340px;
+}
+
+#mailbox header {
+	background-color: #4f4245;
+	border-radius: 5px 5px 0 0;
+	-moz-border-radius: 5px 5px 0 0;
+	-webkit-border-radius: 5px 5px 0 0;
+	color: #ecf0f1;
+	font-weight: bold;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+}
+
+#mailbox ul {
+	background-color: #ecf0f1;
+	list-style-type: none; 
+	margin: 0 0 0px 0px;
+}
+
+#mailbox ul li {
+	border-bottom: 1px solid #a6a8a9;
+	color: #776b6c;
+	height: 40px;
+	line-height: 40px;
+	padding: 0 24px;
+}
+
+#mailbox ul li:hover {
+	background-color: #56a3c7;
+	color: #ecf0f1;
+}
+
+#mailbox ul li:hover a {
+	color: #ecf0f1;
+	text-decoration: none; 
+}
+
+#mailbox ul li span[class*="entypo"] {
+	display: inline-block;
+	padding-right: 18px;
+	width: 16px;
+}
+
+#mailbox ul li a {
+	color: #3e4146;
+}
+
+#mailbox ul li span[class*="count"] {
+	float: right;
+}
+
+#mailbox footer {
+	background-color: #ecf0f1;
+	color: #3e4146;
+	height: 50px;
+	line-height: 50px;
+	padding-left: 24px;
+	margin-top: 0px;
+}
+
+#mailbox footer a {
+	color: #3e4146;
+}
+
+#mailbox footer span[class*="entypo"] {
+	padding-left: 8px;
+}
+
+</style>	

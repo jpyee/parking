@@ -1,0 +1,138 @@
+<div class="questions">
+	<section class="blue-section">
+		<h1>This is a big title, it can go on multiple lines. See for yourself.</h1>
+	</section>
+
+	<ul class="plans">
+		<li class="plan highlight">
+			<span class="price price-green">0</span>
+			
+			<div class="details">
+				<h1 class="plan-title">Free</h1>
+				<p class="plan-description">Not even a cookie</p>
+			</div>
+			
+			<button class="btn select">Select plan</button>
+		</li>
+		
+		<li class="plan">
+			<span class="price price-red">10</span>
+			
+			<div class="details">
+				<h1 class="plan-title">Monthly</h1>
+				<p class="plan-description">With candy and stuff</p>
+			</div>
+			
+			<button class="btn select">Select plan</button>
+		</li>
+	</ul>
+	
+	<p>And some paragraphs.</p>
+</div>
+
+<style>
+.blue-section {
+	background: #358cce;
+	overflow: auto;
+	padding: 20px;
+box-shadow:5px 5px 15px rgba(0,0,0,0.4),inset -1px -1px 1px  #fff;	
+  margin:2em;
+  max-width:20em;
+}
+
+.questions {
+
+	color: white;
+	margin: 0 auto;
+	padding-bottom: 50px;
+	overflow: auto;
+	width: 960px;	
+}
+
+
+.plans {
+	list-style: none;
+	margin: 0;
+	padding: 20px 40px;
+}
+
+.plans .plan {
+		background: white;
+		border-radius: 6px;
+		height: 60px;
+		margin: 10px 0;
+		opacity: 0.8;
+		padding: 4px 25px;
+		width: 450px;
+  box-shadow:5px 5px 15px rgba(0,0,0,0.4),inset -1px -1px 1px  #fff;
+}
+
+.plans .plan:hover,.highlight {
+			opacity: 1;
+}
+
+.plan .price {
+			border-radius: 100%;
+			cursor: default;
+			display: block;
+			float: left;
+			height: 46px;
+			line-height: 46px;
+			margin: 8px 10px 0 0;
+			text-align: center;
+			width: 46px;
+
+}
+
+.price-green {
+				background-color: #e1f1d1;
+				color: #52b327;
+}
+
+.price-red {
+				background-color: #f1e1d1;
+				color: #b35227;
+}
+
+.plans	.details {
+			color: #222;
+			display: block;
+			float: left;
+			height: 46px;
+			padding: 0px 10px;
+}
+
+
+.plans	.details .plan-title {
+				font-size: 17px;
+				font-weight: normal;
+				margin: 2px 0 0;
+				padding: 0;
+				text-transform: uppercase;
+}
+
+.plans	.details .plan-description {
+				color: #666;
+				font-size: 14px;
+				margin: 0;
+				padding: 0;
+}
+
+
+.plans	.select {
+			background: #358cce;
+			border: none;
+			border-radius: 4px;
+			color: white;
+			display: inline-block;
+			float: right;
+			font-size: 14px;
+			margin: 15px 0;
+			padding: 7px 16px;
+
+}
+
+.plans	.select:hover {
+			background-color: #459cde;
+}
+</style>

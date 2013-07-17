@@ -1,0 +1,160 @@
+<style>
+
+#itunes {
+    width: 600px;
+    margin: 0px auto;
+}
+
+#bar {
+    width: 470px;
+    height: 30px;
+    margin: 0px auto;
+    border-top: solid 1px #232a32;
+    border-left: solid 1px #515862;
+    border-right: solid 1px #515862;
+    border-bottom: solid 1px #6a7179;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 1px 0px #c2c5d6;
+    -moz-box-shadow: 0px 1px 0px #c2c5d6;
+    box-shadow: 0px 1px 0px #c2c5d6;
+    background: #67707F; /* old browsers */
+    background: -moz-linear-gradient(top, #67707F 0%, #888DA0 100%); /* firefox */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#67707F), color-stop(100%,#888DA0)); /* webkit */
+    position: relative;
+    z-index: 3;
+    overflow: hidden;
+}
+
+.inner {
+    -webkit-box-shadow: inset 0px 2px 6px RGBA(0,0,0,0.5);
+    -moz-box-shadow: inset 0px 2px 6px RGBA(0,0,0,0.5);
+    display: block;
+    width: 110%;
+    height: 100%;
+    z-index: 999999;
+    position: absolute;
+    left: -10px;
+}
+
+.blue {
+    background: #68a1d6;
+    display: inline-block;
+    height: 100%;
+    width: 30%;
+    z-index: -3;
+    position: relative;
+    float: left;
+    -moz-border-radius: 4px 0 0 4px;
+    border-radius: 4px 0 0 4px;
+}
+
+.purp {
+    background: #a266a6;
+    display: inline-block;
+    height: 100%;
+    width: 20%;
+    z-index: -3;
+    position: relative;
+    float: left;
+}
+
+.org {
+    background: #fa905e;
+    display: inline-block;
+    height: 100%;
+    width: 15%;
+    z-index: -3;
+    position: relative;
+    float: left;
+}
+
+.green {
+    background: #8bcd5f;
+    display: inline-block;
+    height: 100%;
+    width: 10%;
+    z-index: -3;
+    position: relative;
+    float: left;
+}
+
+.yell {
+    background: #ebd430;
+    display: inline-block;
+    height: 100%;
+    width: 10%;
+    z-index: -3;
+    position: relative;
+    float: left;
+}
+
+.free {
+    background: #67707F; /* old browsers */
+    background: -moz-linear-gradient(top, #67707F 0%, #888DA0 100%); /* firefox */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#67707F), color-stop(100%,#888DA0)); /* webkit */
+}
+
+#itunes span { font-size: 12px }
+
+.info {
+    float: left;
+    display: block;
+    text-align: left;
+    line-height: 17px;
+}
+
+ul#led li {
+    list-style: none;
+    list-style-type: none;
+    display: inline;
+    float: left;
+    text-align: left;
+    margin-right: 12px;
+}
+
+ul#led { margin: 15px 0 0 96px }
+
+ul#led li span {
+    border-top: solid 1px #232a32;
+    border-left: solid 1px #515862;
+    border-right: solid 1px #515862;
+    border-bottom: solid 1px #6a7179;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 1px 0px #c2c5d6,inset 0px 1px 2px RGBA(0,0,0,0.5);
+    -moz-box-shadow: 0px 1px 0px #c2c5d6,inset 0px 1px 2px RGBA(0,0,0,0.5);
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+</style>
+
+<div id="itunes">
+	
+	<div class="info">
+	Capacity<br/>
+	<span>29.06 GB</span>
+	</div>
+	
+		<div id="bar">
+		<div class="inner"></div>
+		<div class="blue"></div>
+		<div class="purp"></div>
+		<div class="org"></div>
+		<div class="green"></div>
+		<div class="yell"></div>
+		</div>
+		
+		<ul id="led">
+			<li><span class="blue"></span>Audio</li>
+			<li><span class="purp"></span>Video</li>
+			<li><span class="org"></span>Photos</li>
+			<li><span class="green"></span>Apps</li>
+			<li><span class="yell"></span>Other</li>
+			<li><span class="free"></span>Free</li>
+		</ul>
+ 
+</div>

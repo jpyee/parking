@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= locals.title %></title>
+	
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/bootstrap-responsive.css" rel="stylesheet">  
+	
+   <script src="/assets/js/jquery-1.9.1.min.js"></script>    
+   <script src="/assets/js/underscore.js"></script> 
+   <script src="/assets/js/backbone/backbone-min.js"></script> 
+   <script src="/assets/js/socket.io.js"></script> 
+ 
+<script src="/assets/js/bootstrap/js/bootstrap-tooltip.js"></script>  
+<script src="/assets/js/bootstrap/js/bootstrap-popover.js"></script>   
+<script src="/assets/js/bootstrap/js/bootstrap-alert.js"></script>  
+<script src="/assets/js/bootstrap/js/bootstrap-modal.js"></script>  
+<script src="/assets/js/bootstrap/js/bootstrap-dropdown.js"></script> 
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+
+
+  </head>
+<style>
+body {
+  text-align: center;
+  background-image: -webkit-radial-gradient(center top, circle farthest-corner, #FFFFFF 0%, #D8DFE9 100%);
+  background-image: radial-gradient(circle farthest-corner at center top, #FFFFFF 0%, #D8DFE9 100%);
+}
+
+.container{
+position: relative;
+display: block;
+   padding-top: 92px;
+   
+margin: 0 auto !important;
+ float: none !important;
+ text-align: center;
+ width: 960px;
+}
+
+#sidebar{
+margin-bottom: 20px;
+padding: 20px;
+background: #fff;
+border: 1px solid #DEDEDE;
+border-radius: 4px;
+box-shadow: 0 2px 2px -1px rgba(0,0,0,.055);
+text-align: left;
+}
+
+#sidebar ul li {
+border-bottom: 1px solid #eee;
+line-height: 28px;
+width: 160px;
+}
+
+.portlet-decoration {
+border-bottom: 1px solid #CCC;
+margin-bottom: 15px;
+padding-bottom: 5px;
+}
+
+.content{
+padding: 20px;
+background: #fff;
+border: 1px solid #ccc;
+border-radius: 5px;
+box-shadow: 0 0 10px #ccc;
+overflow: hidden;
+}
+
+#settings-notifications-form label:before {
+	content: '';
+	display: block;
+	width: 70px;
+	height: 30px;
+	display: block;
+	border-radius: 5px;
+
+	-webkit-box-shadow: inset 0 4px 0px rgba(0,0,0,.05), 0 0px 1px rgba(255,255,255,.8),0 1px 2px #fff;
+	box-shadow: inset 0 4px 0px rgba(0,0,0,.05), 0 0px 1px rgba(255,255,255,.8),0 1px 2px #fff;
+	position: relative;
+	z-index: -1;
+	padding: 1px;
+	
+	background: #a6f779;
+}
+
+
+
+input[type="checkbox"] {
+    background-image: -webkit-linear-gradient(hsla(0,0%,0%,.1), hsla(0,0%,100%,.1)),
+                      -webkit-linear-gradient(left, #f66 50%, #6cf 50%);
+    background-size: 100% 100%, 200% 100%;
+    background-position: 0 0, 5px 0;
+    border-radius: 25px;
+    box-shadow: inset 0 1px 4px hsla(0,0%,0%,.5),
+                inset 0 0 10px hsla(0,0%,0%,.5),
+                0 0 0 1px hsla(0,0%,0%,.1),
+                0 -1px 2px 1px hsla(0,0%,0%,.25),
+                0 2px 2px 1px hsla(0,0%,100%,.75),
+                0 -2px 10px 2px hsla(0,0%,100%,.75),
+                0 2px 10px 2px hsla(0,0%,0%,.25);
+    cursor: pointer;
+    height: 10px;
+    padding-right: 10px;
+    position: relative;
+    width: 20px;
+    -webkit-appearance: none;
+    -webkit-transition: .15s;
+}
+input[type="checkbox"]:after {
+    background-color: #eee;
+    background-image: -webkit-linear-gradient(hsla(0,0%,100%,.1), hsla(0,0%,0%,.1));
+    border-radius: 25px;
+    box-shadow: inset 0 1px 1px 1px hsla(0,0%,100%,1),
+                inset 0 -1px 1px 1px hsla(0,0%,0%,.25),
+                0 1px 3px 1px hsla(0,0%,0%,.5),
+                0 0 2px hsla(0,0%,0%,.25);
+    content: '';
+    display: block;
+    height: 10px;
+    left: 0;
+    position: relative;
+    top: 0;
+    width: 10px;
+}
+input[type="checkbox"]:checked {
+    background-position: 0 0, 15px 0;
+    padding-left: 10px;
+    padding-right: 0;
+}
+input[type="checkbox"]:hover:before {
+    background: hsla(0,0%,0%,.25);
+    border-radius: 10px;
+    color: #e4ded4;
+    content: '?';
+    font: 12px/20px sans-serif;
+    height: 20px;
+    left: 25px;
+    letter-spacing: 1px;
+    position: absolute;
+    text-align: center;
+    text-transform: uppercase;
+    top: -5px;
+    width: 20px;
+}
+input[type="checkbox"]:checked:hover:before {
+    content: '?';
+}
+
+.fields{
+margin:auto 0;
+margin-bottom:10px;
+width:300px;
+}
+
+.fields label{ 
+float: left;
+}
+
+.fields input{
+float:right;
+}
+</style>  
+
+  <body>
+    <div class="wrapper">
+	    <div class="inner-wrapper"> 
+        <% include header %>
+
+	
+	<div class="row-fluid container">
+	
+	    <div id="sidebar" class="span3">
+		    <div class="portlet-decoration">
+                <h4>Settings</h4>
+            </div>
+		
+	        <ul class="nav">
+                <li><a href="/settings/account" >Account</a></li>
+                <li><a href="/settings/profile">Profile</a></li>
+                <li><a href="/settings/social" >Social</a></li>				
+                <li><a href="/settings/notification"  class="active">Notifications</a></li>
+            </ul>
+	    </div>	  
+	
+      <div class="span9  content">
+            <h2 class="content-heading"> Email Notifications</h2>
+			
+            <form autocomplete="off" id="settings-notifications-form" action="/settings/8390645/notifications" method="post">
+			     <input type="hidden" name="_csrf" value="<%= token %>"/>
+	             <input type="hidden" name="_method" value="put" />
+                 <fieldset>
+                    <label>General Notifications</label>
+                    <p>Email me when:</p>
+                    <div class="fields">
+                         <label  for="NotificationSetting_follow">Someone follows me</label>  <input name="NotificationSetting[follow]" id="NotificationSetting_follow" value="1" checked="checked" type="checkbox">                  
+					</div>
+                    <div class="fields">
+    		            <label  for="NotificationSetting_watchlist-teacher">Someone adds my class to their watchlist</label>  <input name="NotificationSetting[watchlist-teacher]" id="NotificationSetting_watchlist-teacher" value="1" checked="checked" type="checkbox">    		       
+					</div>
+		            <div class="fields">
+    		            <label class="inline" for="NotificationSetting_class-order-teacher">Someone orders a ticket to my class</label> <input name="NotificationSetting[class-order-teacher]" id="NotificationSetting_class-order-teacher" value="1" checked="checked" type="checkbox">    		       
+					</div>
+		            <div class="fields">
+    		            <label class="inline" for="NotificationSetting_recommendations">Skillshare recommends me classes (weekly)</label> <input name="NotificationSetting[recommendations]" id="NotificationSetting_recommendations" value="1" checked="checked" type="checkbox">    		       
+					</div>
+		        </fieldset>
+                <fieldset>
+                    <label>Classroom Notifications</label>
+                    <p>Email me about:</p>
+                    <div class="fields">
+    		            <label class="inline" for="NotificationSetting_comment_reply">Replies to my comments</label> <input name="NotificationSetting[comment_reply]" id="NotificationSetting_comment_reply" value="1" checked="checked" type="checkbox">    		        
+					</div>
+		            <div class="fields">
+    		            <label class="inline" for="NotificationSetting_past_class_discussion">New discussions in my past classes</label> <input name="NotificationSetting[past_class_discussion]" id="NotificationSetting_past_class_discussion" value="1" checked="checked" type="checkbox">    		       
+					</div>
+		            <div class="fields">
+    		            <label class="inline" for="NotificationSetting_class_discussion">New discussions in my upcoming classes</label> <input name="NotificationSetting[class_discussion]" id="NotificationSetting_class_discussion" value="1" checked="checked" type="checkbox">    		      
+					</div>
+		            <div class="fields">
+                        <label class="inline" for="NotificationSetting_workshop_created">New workshops posted in my groups</label>  <input name="NotificationSetting[workshop_created]" id="NotificationSetting_workshop_created" value="1" checked="checked" type="checkbox">                  
+					</div>
+                    <div class="fields">
+                        <input name="NotificationSetting[project_replies]" id="NotificationSetting_project_replies" value="1" checked="checked" type="checkbox">            <label class="inline" for="NotificationSetting_project_replies">Replies to my projects</label>       
+					</div>
+                </fieldset>
+                <fieldset>
+		                <input class="btn small orange left" type="submit" name="yt0" value="Save Changes">	</fieldset>	
+            </form>
+      </div>
+	</div>  
+	
+
+	
+<!-- display form errors in a custom modal window //-->
+
+
+            <% include footer %>
+		</div>
+	</div>	
+ </body>	
+
+</html>

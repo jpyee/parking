@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Sign in</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Le styles -->
+    <link href="../assets/css/bootstrap.css" rel="stylesheet">
+    <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-color: #f5f5f5;
+      }
+      .form-signin {
+        max-width: 300px;
+        padding: 19px 29px 29px;
+        margin: 0 auto 20px;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        -webkit-border-radius: 5px;
+           -moz-border-radius: 5px;
+                border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                box-shadow: 0 1px 2px rgba(0,0,0,.05);
+      }
+      .form-signin .form-signin-heading,
+      .form-signin .checkbox {
+        margin-bottom: 10px;
+      }
+      .form-signin input[type="text"],
+      .form-signin input[type="password"] {
+        font-size: 16px;
+        height: auto;
+        margin-bottom: 15px;
+        padding: 7px 9px;
+      }	  
+	  #mapcanvas{
+            height: 100%; width: 100%; top: 0; left: 0; position: absolute; z-index: 100;
+	  }
+    </style>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]
+    -->   
+   <script src="../assets/js/jquery-1.8.1.min.js"></script>   
+   <script src="../assets/js/underscore.js"></script>
+   <script src="../assets/js/backbone-min.js"></script>
+   <script src="../assets/js/jquery.tmpl.min.js"></script>  
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="../assets/ico/favicon.png">
+  </head>
+
+
+    <script type="text/template" id="headerTemplate"> 
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">Project name</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li class="nav-header">Nav header</li>
+                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">One more separated link</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="navbar-form pull-right">
+              <input class="span2" type="text" placeholder="Email">
+              <input class="span2" type="password" placeholder="Password">
+              <button type="submit" class="btn">Sign in</button>
+            </form>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+     </div>
+    </script>
+
+<script type="text/template" id="formTemplate">   
+<div class="row-fluid">
+    <form class="form-horizontal span12">
+        <fieldset>
+            <legend>Wine Details</legend>
+            <br/>
+            <div class="row">
+                <div class="span8">
+                    <div class="control-group">
+                        <label for="wineId" class="control-label">Id:</label>
+                        <div class="controls">
+                            <input id="id" name="id" type="text" "
+                                   disabled/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="question" class="control-label">Question:</label>
+                        <div class="controls">
+                            <textarea id="question" name="question" style="width: 90%;" rows="6"></textarea>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="answer" class="control-label">Answer:</label>
+                        <div class="controls">
+                            <input type="text" id="answer" name="answer" />
+                            <span class="help-inline"></span>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="level" class="control-label">level:</label>
+                        <div class="controls">
+                            <select class="input-small" id="level" name="level" >
+                                <option>
+                                3</option>
+                                <option>
+                                2</option>
+                                <option>
+                                1</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="span4 pictureContainer">
+                    <div class="well" style="width: 180px;text-align: center;width:50%;margin: 0px auto;">
+                        <p><img id="picture" width="180" /></p>
+                        <p style="color:#999;">To change the picture, drag a new picture from your file system onto the box above.</p>
+                    </div>
+                </div>
+   </script>
+    
+  <body>
+
+    <div class="container">
+	
+    </div> 
+	
+  </body>
+<script>
+window.AppRouter = Backbone.Router.extend({	 
+    routes:{
+    	'':'home'
+    },
+    initialize:function () {
+    	console.log('init route');    	
+        $('body').append( new FormView().render().el) ; 	    
+    },
+    home:function(){
+    	console.log('home');
+    }
+});
+
+window.FormView = Backbone.View.extend({
+    template:_.template($("#formTemplate").html()),
+    initialize: function () {
+        this.render();
+    },
+    events:{
+    	"change"        : "change",
+    	"drop .pictureContainer" : "dropHandler",
+    	"click .save": "saveQuestion",
+    	"click .delete": "deleteQuestion"
+    },
+    dropHandler: function (event) {
+    	console.log('drophandler');
+        event.stopPropagation();
+        event.preventDefault();
+        var e = event.originalEvent;
+        e.dataTransfer.dropEffect = 'copy';
+        this.pictureFile = e.dataTransfer.files[0];
+
+        // Read the image file from the local file system and display it in the img tag
+        var reader = new FileReader();
+        reader.onloadend = function () {
+            $('#picture').attr('src', reader.result);
+        };
+        reader.readAsDataURL(this.pictureFile);
+    },
+    render: function () {
+    	//console.log(this.template);
+    	//this.$el.html(this.template); 
+    	this.setElement(this.template());
+        return this;
+    },
+    change: function (event) {
+        // Apply the change to the model
+        var target = event.target;
+        var change = {};
+        change[target.name] = target.value;
+        this.model.set(change);
+    },
+    deleteQuestion:function(){
+    	console.log('delete question');
+    	
+    	var model = new Question();
+        model.destroy({
+            success: function () {
+                alert('Wine deleted successfully');
+                window.history.back();
+            }
+        });
+        return false;    	
+    },
+    saveQuestion: function(){
+    	console.log('save question');
+        var self = this;
+        console.log('before save   '+this.$('input[name=question]').val());
+    	var model = new Question({question:'this is a new question',answer:'this is a new answer'});
+
+    	console.log(model.isNew()+  "    "+model.get('question')+"   "+model.get('answer'));
+        model.save( {
+            success: function (model) {
+            	console.log("save success");
+                self.render();
+                //app.navigate('wines/' + model.id, false);
+            },
+            error: function () {
+            	console.log("save failure");
+            }
+        });    	
+    }
+});
+
+
+$(function(){
+   var app = new AppRouter();
+   Backbone.history.start({pushState : true});
+})
+</script> 
+</html>

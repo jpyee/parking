@@ -1,0 +1,162 @@
+<style>
+.demo-block {
+display: block;
+width: 218px;
+height: 210px;
+position: relative;
+margin-bottom: 20px;
+margin-right: 20px;
+float: left;
+overflow: visible;
+border-bottom: 0 none;
+}
+
+.flip {
+-webkit-perspective: 800px;
+-moz-perspective: 800px;
+-ms-perspective: 800px;
+-o-perspective: 800px;
+perspective: 800px;
+
+
+-webkit-transition-property: -webkit-transform, opacity;
+-moz-transition-property: -moz-transform, opacity;
+-o-transition-property: top, left, opacity;
+transition-property: transform, opacity;
+}
+
+.demo-block-wrapper {
+display: block;
+width: 100%;
+height: 100%;
+}
+
+.demo-block-wrapper {
+-webkit-transition: -webkit-transform 1s;
+-moz-transition: -moz-transform 1s;
+-ms-transition: -ms-transform 1s;
+-o-transition: -o-transform 1s;
+transition: transform 1s;
+-webkit-transform-style: preserve-3d;
+-moz-transform-style: preserve-3d;
+-ms-transform-style: preserve-3d;
+-o-transform-style: preserve-3d;
+transform-style: preserve-3d;
+}
+
+.demo-block.flip .demo-block-contents {
+-webkit-backface-visibility: hidden;
+-moz-backface-visibility: hidden;
+-ms-backface-visibility: hidden;
+-o-backface-visibility: hidden;
+backface-visibility: hidden;
+}
+
+.demo-block.flip .demo-block-contents {
+position: absolute;
+top: 0;
+height: 100%;
+width: 100%;
+background-color: white;
+border: 1px solid #ccc;
+border-radius: 5px;
+box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.4);
+}
+
+
+.demo-block.flip .demo-block-caption {
+position: static;
+margin-top: -10px;
+padding-top: 18px;
+height: 47px;
+}
+
+.demo-block-caption {
+text-align: center;
+height: 50px;
+padding-top: 15px;
+background: white;
+position: absolute;
+bottom: 0;
+width: 100%;
+border-radius: 0 0 5px 5px;
+}
+
+.demo-block-caption h3 {
+font-size: 14px;
+font-weight: 600;
+line-height: 12px;
+margin: 0;
+}
+
+.demo-device {
+font-size: 14px;
+color: #666;
+}
+
+.demo-block-contents.back {
+-webkit-transform: rotateY(-180deg);
+-moz-transform: rotateY(-180deg);
+-ms-transform: rotateY(-180deg);
+-o-transform: rotateY(-180deg);
+transform: rotateY(-180deg);
+}
+
+.demo-block.flip .demo-block-desc {
+display: none;
+top: 0;
+position: absolute;
+}
+
+
+.demo-new-badge {
+background: #40C8F4;
+color: #FFFFFF;
+font-family: Museo-700,serif;
+font-size: 16px;
+font-weight: 600;
+left: -40px;
+padding-top: 40px;
+position: absolute;
+text-align: center;
+top: -20px;
+-moz-transform: rotate(-45deg);
+-webkit-transform: rotate(-45deg);
+-o-transform: rotate(-45deg);
+transform: rotate(-45deg);
+width: 100px;
+-webkit-transition: opacity 0s linear 1s;
+transition: opacity 0s linear 1s;
+}
+
+<!-- http://proto.io/en/examples/ -->
+
+</style>
+
+<article class="demo-block flip" data-device="iphone" data-type="full" style="position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(0px, 40px, 0px);">
+				<div class="demo-block-wrapper">
+					<div class="demo-block-contents">
+						<img src="http://static.proto.io/images/publicsite/demos/protoio-event.png" class="demo-block-img">
+						<div class="demo-new-badge">NEW</div>
+						<a class="demo-block-desc" target="_blank" href="https://showcase.proto.io/share/?id=c86aa62b-21b6-4c9f-9eff-acf7896a2368&amp;v=6">
+							High-fidelity App prototype for our friends at AppBaker's popular TEDx event starter pack used in creating over 70 TEDx iPhone &amp; Android event apps worldwide.
+							<span class="demo-block-view-prototype"></span>
+						</a>
+						<div class="demo-block-caption">
+							<h3>Proto.io Event</h3>
+							<div class="demo-device">iPhone 5</div>
+						</div>
+					</div>
+				<div class="demo-block-contents back">
+						<img src="http://static.proto.io/images/publicsite/demos/protoio-event.png" class="demo-block-img">
+						
+						<a class="demo-block-desc" target="_blank" href="https://showcase.proto.io/share/?id=c86aa62b-21b6-4c9f-9eff-acf7896a2368&amp;v=6">
+							High-fidelity App prototype for our friends at AppBaker's popular TEDx event starter pack used in creating over 70 TEDx iPhone &amp; Android event apps worldwide.
+							<span class="demo-block-view-prototype"></span>
+						</a>
+						<div class="demo-block-caption">
+							<h3>Proto.io Event</h3>
+							<div class="demo-device">iPhone 5</div>
+						</div>
+					</div></div>
+</article>
